@@ -157,20 +157,24 @@ body{
 }
 
 /* moving track */
+.cards {
+    overflow: hidden;
+}
+
 .cards-track {
     display: flex;
     gap: 25px;
+    width: max-content;
     animation: scroll 20s linear infinite;
 }
 
-/* animation */
 @keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.cards-track:hover {
+    animation-play-state: paused;
 }
 
 .card{
