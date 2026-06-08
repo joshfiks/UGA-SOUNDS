@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UgaSounds - Music Platform</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0014;
+    color: white;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(90deg, #6a0dad, #3b0066);
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* BUTTONS */
+button {
+    background: #6a0dad;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+button:hover {
+    background: #8a2be2;
+}
+
+/* CONTAINER */
+.container {
+    padding: 20px;
+}
+
+/* CARDS */
+.card {
+    background: #1a002b;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(106,13,173,0.3);
+}
+
+/* INPUTS */
+input, select {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+/* HIDE PAGES */
+.page {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+/* SMALL TEXT */
+.small {
+    font-size: 13px;
+    opacity: 0.8;
+}
+</style>
+</head>
+
+<body>
+
+<header>🎵 UgaSounds</header>
+
+<!-- ================= TERMS PAGE ================= -->
+<div id="terms" class="page active container">
+    <h2>Welcome to UgaSounds</h2>
+    <p class="small">
+        Before continuing, you must agree to our Terms and Privacy Policy.
+    </p>
+
+    <div class="card">
+        <h3>Rules</h3>
+        <ul>
+            <li>No copyright violations</li>
+            <li>No fake content</li>
+            <li>Respect artists</li>
+            <li>Promotion services may be paid</li>
+        </ul>
+    </div>
+
+    <button onclick="acceptTerms()">I Agree & Continue</button>
+</div>
+
+<!-- ================= AUTH PAGE ================= -->
+<div id="auth" class="page container">
+    <h2>🎤 Join UgaSounds</h2>
+
+    <div class="card">
+        <h3>Signup</h3>
+        <input id="name" placeholder="Artist Name">
+        <input id="email" placeholder="Email or Phone">
+        <input id="pass" type="password" placeholder="Password">
+        <select id="genre">
+            <option>Afrobeat</option>
+            <option>Hip Hop</option>
+            <option>Gospel</option>
+            <option>Dancehall</option>
+        </select>
+        <button onclick="signup()">Create Account</button>
+    </div>
+
+    <div class="card">
+        <h3>Login</h3>
+        <input id="loginEmail" placeholder="Email or Phone">
+        <input id="loginPass" type="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+    </div>
+</div>
+
+<!-- ================= DASHBOARD ================= -->
+<div id="dashboard" class="page container">
+    <h2>🎧 Artist Dashboard</h2>
+
+    <div class="card">
+        <h3>Welcome to UgaSounds</h3>
+        <p>Upload your music and grow your audience.</p>
+    </div>
+
+    <div class="card">
+        <h3>📤 Upload Song</h3>
+        <input placeholder="Song Title">
+        <input placeholder="Song Link (Google Drive / YouTube)">
+        <button>Upload</button>
+    </div>
+
+    <div class="card">
+        <h3>🔥 Promotion</h3>
+        <p>Feature your song on homepage</p>
+        <button>Apply for Promotion</button>
+    </div>
+
+    <div class="card">
+        <h3>🎶 Trending Artists</h3>
+        <p>• Joshfiks</p>
+        <p>• New Artist</p>
+        <p>• Upcoming Talent</p>
+    </div>
+
+    <button onclick="logout()">Logout</button>
+</div>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+function show(page){
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(page).classList.add('active');
+}
+
+function acceptTerms(){
+    localStorage.setItem("terms","yes");
+    show("auth");
+}
+
+function signup(){
+    alert("Account created successfully!");
+    localStorage.setItem("user","yes");
+    show("dashboard");
+}
+
+function login(){
+    localStorage.setItem("user","yes");
+    show("dashboard");
+}
+
+function logout(){
+    localStorage.removeItem("user");
+    show("auth");
+}
+
+/* AUTO CHECK */
+window.onload = function(){
+    if(localStorage.getItem("terms") === "yes"){
+        show("auth");
+    }
+}
+</script>
+
+</body>
+</html>
