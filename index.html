@@ -2,198 +2,182 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>UgaSounds - Music Platform</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UgaSounds - Discover Africa's Sound</title>
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0b0014;
-    color: white;
-}
+<link rel="stylesheet" href="style.css">
 
-/* HEADER */
-header {
-    background: linear-gradient(90deg, #6a0dad, #3b0066);
-    padding: 20px;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* BUTTONS */
-button {
-    background: #6a0dad;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 6px;
-}
-
-button:hover {
-    background: #8a2be2;
-}
-
-/* CONTAINER */
-.container {
-    padding: 20px;
-}
-
-/* CARDS */
-.card {
-    background: #1a002b;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(106,13,173,0.3);
-}
-
-/* INPUTS */
-input, select {
-    width: 90%;
-    padding: 10px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 5px;
-}
-
-/* HIDE PAGES */
-.page {
-    display: none;
-}
-
-.active {
-    display: block;
-}
-
-/* SMALL TEXT */
-.small {
-    font-size: 13px;
-    opacity: 0.8;
-}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<header>🎵 UgaSounds</header>
+<nav class="navbar">
+    <div class="logo">
+        <span class="wave">🎵</span>
+        UgaSounds
+    </div>
 
-<!-- ================= TERMS PAGE ================= -->
-<div id="terms" class="page active container">
-    <h2>Welcome to UgaSounds</h2>
-    <p class="small">
-        Before continuing, you must agree to our Terms and Privacy Policy.
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Trending</a></li>
+        <li><a href="#">Artists</a></li>
+        <li><a href="#">Playlists</a></li>
+    </ul>
+
+    <div class="account-btn" onclick="openModal()">
+        👤
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Discover Africa's Sound</h1>
+
+        <p>
+            Stream music, discover rising artists,
+            and connect with talent from across Africa.
+        </p>
+
+        <button class="hero-btn">
+            Start Listening
+        </button>
+    </div>
+</section>
+
+<section class="section">
+    <h2>🔥 Trending Artists</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="cover"></div>
+            <h3>Joshfiks</h3>
+            <p>Afrobeat</p>
+        </div>
+
+        <div class="card">
+            <div class="cover"></div>
+            <h3>Artist Name</h3>
+            <p>Hip Hop</p>
+        </div>
+
+        <div class="card">
+            <div class="cover"></div>
+            <h3>Artist Name</h3>
+            <p>Dancehall</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <h2>🎧 Latest Releases</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="cover"></div>
+            <h3>Song Title</h3>
+            <p>Artist Name</p>
+        </div>
+
+        <div class="card">
+            <div class="cover"></div>
+            <h3>Song Title</h3>
+            <p>Artist Name</p>
+        </div>
+
+        <div class="card">
+            <div class="cover"></div>
+            <h3>Song Title</h3>
+            <p>Artist Name</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="artist-zone">
+    <h2>🎤 Artist Zone</h2>
+
+    <p>
+        Create an artist profile, upload your music,
+        grow your audience and get discovered.
     </p>
 
-    <div class="card">
-        <h3>Rules</h3>
-        <ul>
-            <li>No copyright violations</li>
-            <li>No fake content</li>
-            <li>Respect artists</li>
-            <li>Promotion services may be paid</li>
-        </ul>
+    <button onclick="openModal()">
+        Join as Artist
+    </button>
+</section>
+
+<footer>
+    <p>© 2026 UgaSounds. All Rights Reserved.</p>
+</footer>
+
+<div class="modal" id="authModal">
+
+    <div class="modal-content">
+
+        <span class="close" onclick="closeModal()">&times;</span>
+
+        <h2>Create Account</h2>
+
+        <div class="account-types">
+
+            <button onclick="showUserForm()">
+                Listener
+            </button>
+
+            <button onclick="showArtistForm()">
+                Artist
+            </button>
+
+        </div>
+
+        <div id="userForm">
+
+            <input type="text" placeholder="Username">
+
+            <input type="email" placeholder="Email">
+
+            <input type="password" placeholder="Password">
+
+            <label>
+                <input type="checkbox">
+                I agree to Terms & Privacy Policy
+            </label>
+
+            <button>Create Account</button>
+
+        </div>
+
+        <div id="artistForm" style="display:none;">
+
+            <input type="text" placeholder="Artist Name">
+
+            <input type="email" placeholder="Email">
+
+            <input type="password" placeholder="Password">
+
+            <input type="text" placeholder="Genre">
+
+            <input type="url" placeholder="Spotify Artist Profile Link">
+
+            <label>
+                <input type="checkbox">
+                I agree to Artist Terms & Privacy Policy
+            </label>
+
+            <button>Create Artist Account</button>
+
+        </div>
+
     </div>
 
-    <button onclick="acceptTerms()">I Agree & Continue</button>
 </div>
 
-<!-- ================= AUTH PAGE ================= -->
-<div id="auth" class="page container">
-    <h2>🎤 Join UgaSounds</h2>
-
-    <div class="card">
-        <h3>Signup</h3>
-        <input id="name" placeholder="Artist Name">
-        <input id="email" placeholder="Email or Phone">
-        <input id="pass" type="password" placeholder="Password">
-        <select id="genre">
-            <option>Afrobeat</option>
-            <option>Hip Hop</option>
-            <option>Gospel</option>
-            <option>Dancehall</option>
-        </select>
-        <button onclick="signup()">Create Account</button>
-    </div>
-
-    <div class="card">
-        <h3>Login</h3>
-        <input id="loginEmail" placeholder="Email or Phone">
-        <input id="loginPass" type="password" placeholder="Password">
-        <button onclick="login()">Login</button>
-    </div>
-</div>
-
-<!-- ================= DASHBOARD ================= -->
-<div id="dashboard" class="page container">
-    <h2>🎧 Artist Dashboard</h2>
-
-    <div class="card">
-        <h3>Welcome to UgaSounds</h3>
-        <p>Upload your music and grow your audience.</p>
-    </div>
-
-    <div class="card">
-        <h3>📤 Upload Song</h3>
-        <input placeholder="Song Title">
-        <input placeholder="Song Link (Google Drive / YouTube)">
-        <button>Upload</button>
-    </div>
-
-    <div class="card">
-        <h3>🔥 Promotion</h3>
-        <p>Feature your song on homepage</p>
-        <button>Apply for Promotion</button>
-    </div>
-
-    <div class="card">
-        <h3>🎶 Trending Artists</h3>
-        <p>• Joshfiks</p>
-        <p>• New Artist</p>
-        <p>• Upcoming Talent</p>
-    </div>
-
-    <button onclick="logout()">Logout</button>
-</div>
-
-<!-- ================= SCRIPT ================= -->
-<script>
-function show(page){
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById(page).classList.add('active');
-}
-
-function acceptTerms(){
-    localStorage.setItem("terms","yes");
-    show("auth");
-}
-
-function signup(){
-    alert("Account created successfully!");
-    localStorage.setItem("user","yes");
-    show("dashboard");
-}
-
-function login(){
-    localStorage.setItem("user","yes");
-    show("dashboard");
-}
-
-function logout(){
-    localStorage.removeItem("user");
-    show("auth");
-}
-
-/* AUTO CHECK */
-window.onload = function(){
-    if(localStorage.getItem("terms") === "yes"){
-        show("auth");
-    }
-}
-</script>
+<script src="app.js"></script>
 
 </body>
 </html>
